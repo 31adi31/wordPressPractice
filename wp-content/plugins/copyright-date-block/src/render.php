@@ -11,6 +11,22 @@
  */
 
 // Get the current year.
+//function for validating the user
+function validateUser() {
+	if(current_user_can('edit_post')) {
+		return $block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
+	}
+}
+function displayBlockContent() {
+	// The current year is different from the fallback, so render the updated block content.
+	if ( ! empty( $attributes['startingYear'] ) && ! empty( $attributes['showStartingYear'] ) ) {
+		return $display_date = $attributes['startingYear'] . '–' . $current_year;
+	} else {
+		return $display_date = $current_year;
+	}
+}
+add_action('displayBlockContent','validateUser');
+//do_action();
 $current_year = date( "Y" );
 
 // Determine which content to display.
@@ -20,14 +36,9 @@ if ( isset( $attributes['fallbackCurrentYear'] ) && $attributes['fallbackCurrent
 	$block_content = $content;
 } else {
 
-	// The current year is different from the fallback, so render the updated block content.
-	if ( ! empty( $attributes['startingYear'] ) && ! empty( $attributes['showStartingYear'] ) ) {
-		$display_date = $attributes['startingYear'] . '–' . $current_year;
-	} else {
-		$display_date = $current_year;
-	}
+	displayBlockContent();
 
-	$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
+	
 }
 
 echo wp_kses_post( $block_content );
