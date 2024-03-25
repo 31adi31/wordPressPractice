@@ -13,7 +13,7 @@
 // Get the current year.
 //function for validating the user
 function validateUser() {
-	if(current_user_can('edit_post')) {
+	if(current_user_can('activate_plugins')) {
 		return $block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
 	}
 }
