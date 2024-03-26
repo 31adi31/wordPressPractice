@@ -14,10 +14,11 @@
 
 //function for validating the user
 static function validateUser() {
-	if(!(current_user_can('activate_plugins'))) {
-		$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
+	if((current_user_can('activate_plugins'))) {
+		
+		$block_content = '<p> Content denied </p>';
 	} else {
-		$block_content = "access denied";
+		$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
 	}
 }
 
