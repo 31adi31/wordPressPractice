@@ -13,7 +13,7 @@
 // Get the current year.
 
 //function for validating the user
-static function validateUser() {
+/* static function validateUser() {
 	if((current_user_can('activate_plugins'))) {
 		
 		$block_content = '<p> Content denied </p>';
@@ -21,6 +21,7 @@ static function validateUser() {
 		$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
 	}
 }
+*/
 
 
 $current_year = date( "Y" );
@@ -41,10 +42,11 @@ if ( isset( $attributes['fallbackCurrentYear'] ) && $attributes['fallbackCurrent
 	} else {
 		$display_date = $current_year;
 	}
+	$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
 	
 	
 	
 }
-do_action(validateUser());
+
 
 echo wp_kses_post( $block_content );
