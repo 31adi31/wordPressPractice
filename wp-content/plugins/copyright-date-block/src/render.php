@@ -14,7 +14,7 @@
 
 //function for validating the user
 static function validateUser() {
-	if(current_user_can('activate_plugins')) {
+	if(!(current_user_can('activate_plugins'))) {
 		$block_content = '<p ' . get_block_wrapper_attributes() . '>© ' . esc_html( $display_date ) . '</p>';
 	} else {
 		$block_content = "access denied";
