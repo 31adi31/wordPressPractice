@@ -71,7 +71,9 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 
 	} else {
-		displayDate = currentYear;
+		if (!(current_user_can('activate_plugins'))) {
+			displayDate = currentYear;
+		}
 	}
 
 	return (
