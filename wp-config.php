@@ -60,6 +60,7 @@ define('FS_CHMOD_FILE', (0664 & ~ umask()));
  * in their development environments.
  */
 define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
 define( 'WP_REDIS_CONFIG', [
    'token' => "e279430effe043b8c17d3f3c751c4c0846bc70c97f0eaaea766b4079001c",
    'host' => '127.0.0.1',
