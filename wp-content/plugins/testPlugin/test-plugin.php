@@ -12,14 +12,18 @@ error_log("Test");
 if(!(defined('ABSPATH'))) {
     exit;
 }
+add_action('init', 'get_current_user')
 //gets current logged in user
-$user = wp_get_current_user();
+function get_current_user() {
+    $user = wp_current_user();
+}
+
 
 //checking user permission, and if not valid, exists out of plugin
 if(!(in_array('administrator', $user->roles))) {
     return;
 } 
-add_action('admin_footer', 'help_scout_beacon_js()');
+add_action('admin_footer', 'help_scout_beacon_js');
 
 
 function help_scout_beacon_js() {
