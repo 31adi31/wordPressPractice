@@ -12,11 +12,10 @@ error_log("Test");
 if(!(defined('ABSPATH'))) {
     exit;
 }
-add_action('init', 'getUser')
+//add_action('init', 'getUser')
 //gets current logged in user
-function getUser() {
     $user = wp_current_user();
-}
+
 
 
 //checking user permission, and if not valid, exists out of plugin
