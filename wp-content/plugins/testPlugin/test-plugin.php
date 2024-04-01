@@ -13,9 +13,12 @@ if(!(defined('ABSPATH'))) {
     exit;
 }
 add_action('plugins_loaded', 'verifyUser');
+function getUser() {
+    $user = wp_current_user();
+}
 //gets current logged in user
 function verifyUser() {
-    $user = wp_current_user();
+    add_action('plugins_loaded', 'getUser');
     if(!(in_array('administrator', $user->roles))) {
         return;
     } 
