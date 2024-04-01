@@ -12,7 +12,7 @@ error_log("Test");
 if(!(defined('ABSPATH'))) {
     exit;
 }
-add_action('plugins_loaded', 'getUser')
+add_action('plugins_loaded', 'getUser');
 //gets current logged in user
 function getUser() {
     $user = wp_current_user();
