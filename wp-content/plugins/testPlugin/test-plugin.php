@@ -12,18 +12,19 @@ error_log("Test");
 if(!(defined('ABSPATH'))) {
     exit;
 }
-add_action('plugins_loaded', 'getUser');
+add_action('plugins_loaded', 'verifyUser');
 //gets current logged in user
-function getUser() {
+function verifyUser() {
     $user = wp_current_user();
+    if(!(in_array('administrator', $user->roles))) {
+        return;
+    } 
 }
 
 
 
 //checking user permission, and if not valid, exists out of plugin
-if(!(in_array('administrator', $user->roles))) {
-    return;
-} 
+
 add_action('admin_footer', 'help_scout_beacon_js');
 
 
