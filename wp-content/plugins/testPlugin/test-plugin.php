@@ -7,14 +7,14 @@
 */
 error_log("Test");
 
-//current_user_can('activate_plugins')
+
 
 if(!(defined('ABSPATH'))) {
     exit;
 }
-add_action('init', 'get_current_user')
+add_action('init', 'getUser')
 //gets current logged in user
-function get_current_user() {
+function getUser() {
     $user = wp_current_user();
 }
 
