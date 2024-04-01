@@ -18,9 +18,9 @@ $user = wp_get_current_user();
 //checking user permission, and if not valid, exists out of plugin
 if(!(in_array('administrator', $user->roles))) {
     return;
-} else {
-    add_action('admin_footer', 'help_scout_beacon_js()');
-}
+} 
+add_action('admin_footer', 'help_scout_beacon_js()');
+
 
 function help_scout_beacon_js() {
     ?>
