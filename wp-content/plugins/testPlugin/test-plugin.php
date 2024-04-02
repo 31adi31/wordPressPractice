@@ -13,15 +13,16 @@ if(!(defined('ABSPATH'))) {
     exit;
 }
 add_action('plugins_loaded', 'verifyUser');
+
 function getUser() {
-    return wp_current_user();
+    return wp_get_current_user(); // Retrieve the current user object
 }
-//gets current logged in user
+
 function verifyUser() {
-    $user = getUser();
-    if(!(in_array('administrator', $user->roles))) {
-        return;
-    } 
+    $user = getUser(); // Call getUser() to get the current user
+    if (!(in_array('administrator', $user->roles))) {
+        // Do something if user is not an administrator
+    }
 }
 
 
