@@ -26,6 +26,7 @@ function verifyUser() {
 
         //checking user permission, and if not valid, exists out of plugin
         add_action('admin_footer', 'help_scout_beacon_js');
+        add_action('elementor/editor/footer', 'help_scout_beacon_js');
     }
 }
 
