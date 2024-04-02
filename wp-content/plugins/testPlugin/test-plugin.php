@@ -21,15 +21,18 @@ function getUser() {
 function verifyUser() {
     $user = getUser(); // Call getUser() to get the current user
     if (!(in_array('administrator', $user->roles))) {
-        // Do something if user is not an administrator
+        return;
+    } else {
+
+        //checking user permission, and if not valid, exists out of plugin
+        add_action('admin_footer', 'help_scout_beacon_js');
     }
 }
 
 
 
-//checking user permission, and if not valid, exists out of plugin
 
-add_action('admin_footer', 'help_scout_beacon_js');
+
 
 
 function help_scout_beacon_js() {
