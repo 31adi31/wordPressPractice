@@ -8,24 +8,29 @@
 error_log("Test");
 
 
-
+//this ensures that no one can brute force into the application, safety measure
 if(!(defined('ABSPATH'))) {
     exit;
 }
+//when the pluggins are loaded and intialized, the verifyUser function will run
 add_action('plugins_loaded', 'verifyUser');
-
+//functino returns the current user objects 
 function getUser() {
     return wp_get_current_user(); // Retrieve the current user object
 }
 
+//main function that will execute the plugin depending on authentication
 function verifyUser() {
     $user = getUser(); // Call getUser() to get the current user
+    //checks if the current user is an administrator or not 
     if (!(in_array('administrator', $user->roles))) {
+        //will not return the plugin
         return;
     } else {
 
-        //checking user permission, and if not valid, exists out of plugin
+       //using action hook to execute function into admin footer 
         add_action('admin_footer', 'help_scout_beacon_js');
+        //using action hook to execute function into elementor footer 
         add_action('elementor/editor/footer', 'help_scout_beacon_js');
     }
 }
@@ -35,7 +40,7 @@ function verifyUser() {
 
 
 
-
+//function executes the javascript for the helpScout beacon
 function help_scout_beacon_js() {
     ?>
     <script type="text/javascript">
